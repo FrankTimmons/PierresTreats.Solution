@@ -64,19 +64,19 @@ namespace PierresTreats.Controllers
       return RedirectToAction("Index");
     }
 
-    public ActionResult AddFlavor(int id)
+    public ActionResult AddTreat(int id)
     {
-      var thisItem = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
-      ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
-      return View(thisItem);
+      var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
+      return View(thisFlavor);
     }
 
     [HttpPost]
-    public ActionResult AddFlavor(Flavor flavor, int TreatId)
+    public ActionResult AddTreat(Flavor flavor, int TreatId)
     {
       if (TreatId != 0)
       {
-      _db.FlavorTreat.Add(new FlavorTreat() { TreatId = TreatId, FlavorId = flavor.FlavorId });
+        _db.FlavorTreat.Add(new FlavorTreat() { TreatId = TreatId, FlavorId = flavor.FlavorId });
       }
       _db.SaveChanges();
       return RedirectToAction("Index");

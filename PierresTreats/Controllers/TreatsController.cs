@@ -29,7 +29,7 @@ namespace PierresTreats.Controllers
       var treats = _db.Treats.ToList();
       return View(treats);
     }
-    
+
     [AllowAnonymous]
     public ActionResult Details(int id)
     {
@@ -66,9 +66,9 @@ namespace PierresTreats.Controllers
 
     public ActionResult AddFlavor(int id)
     {
-      var thisItem = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
+      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
       ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
-      return View(thisItem);
+      return View(thisTreat);
     }
 
     [HttpPost]
