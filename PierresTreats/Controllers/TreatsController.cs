@@ -29,7 +29,8 @@ namespace PierresTreats.Controllers
       var treats = _db.Treats.ToList();
       return View(treats);
     }
-
+    
+    [AllowAnonymous]
     public ActionResult Details(int id)
     {
       var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
