@@ -30,6 +30,12 @@ namespace PierresTreats.Controllers
       return View(treats);
     }
 
+    public ActionResult Details(int id)
+    {
+      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
+      return View(thisTreat);
+    }
+
     public ActionResult Create()
     {
       return View();
